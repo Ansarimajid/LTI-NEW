@@ -407,6 +407,7 @@ video {
 }
 
 .breadcrumbs {
+    display: none;
     position: relative;
     height: 480px;
     background-image: url(../img/breadcrumb-bg.jpg);
