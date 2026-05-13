@@ -107,13 +107,13 @@
     <header class="header-area position_top">
         <div class="site-logo">
             <div class="logo">
-                <a href="{% url "homePageFront" %}"><img src="{{ settings.logo_light.url }}" alt="image"></a>
+                <a href="{% url "homePageFront" %}"><img src="{{ settings.logo_dark.url }}" alt="image"></a>
             </div>
         </div>
         <div class="main-menu">
             <nav class="main-nav">
                 <div class="mobile-menu-logo">
-                    <a href="{% url "homePageFront" %}"><img src="{{ settings.logo_dark.url }}" alt></a>
+                    <a href="{% url "homePageFront" %}"><img src="{{ settings.logo_light.url }}" alt></a>
                     <div class="remove">
                         <i class="bi bi-plus-lg"></i>
                     </div>
@@ -229,7 +229,7 @@
                         <div class="col-md-3 col-lg-3 col-xl-3">
                             <div class="footer-widget">
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="{{ settings.logo_light.url }}" alt></a>
+                                    <a href="index.html"><img src="{{ settings.logo_dark.url }}" alt></a>
                                 </div>
                                 <p>{{ header_footer.footer_col1_description }}</p>
                                 <ul class="social-media-icons">

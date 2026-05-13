@@ -79,27 +79,27 @@ video {
 }
 
 .sec-pad {
-    padding: 120px 0
+    padding: 70px 0
 }
 
 .sec-pad-top {
-    padding-top: 120px
+    padding-top: 70px
 }
 
 .sec-pad-bottom {
-    padding-bottom: 120px
+    padding-bottom: 70px
 }
 
 .sec-mar {
-    margin: 120px 0
+    margin: 70px 0
 }
 
 .sec-mar-top {
-    margin-top: 120px
+    margin-top: 70px
 }
 
 .sec-mar-bottom {
-    margin-bottom: 120px
+    margin-bottom: 70px
 }
 
 .preloader {
@@ -407,50 +407,31 @@ video {
 }
 
 .breadcrumbs {
-    display: none;
+    display: block;
     position: relative;
-    height: 480px;
-    background-image: url(../img/breadcrumb-bg.jpg);
-    background-size: cover;
-    background-position: center center;
+    background-color: #f0f9fd;
+    margin-top: 115px;
     z-index: 1
+}
+
+.breadcrumbs:before {
+    display: none;
+}
+
+.breadcrumb-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    padding: 16px 0
 }
 
 @media(max-width:767px) {
     .breadcrumbs {
-        height: 320px
+        margin-top: 80px
     }
-}
-
-.breadcrumbs:before {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-color: #f8f8f8;
-    opacity: .93;
-    z-index: -1
-}
-
-.breadcrumb-wrapper {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    height: 480px
-}
-
-@media(max-width:767px) {
     .breadcrumb-wrapper {
-        height: 320px
+        padding: 12px 0
     }
 }
 
@@ -459,22 +440,22 @@ video {
 }
 
 .breadcrumb-cnt h1 {
-    font-size: 60px;
+    font-size: 22px;
     font-weight: 700;
     color: #20B7E5;
     text-transform: capitalize;
-    margin-bottom: 5px
+    margin-bottom: 2px
 }
 
 @media only screen and (min-width:768px) and (max-width:991px) {
     .breadcrumb-cnt h1 {
-        font-size: 40px
+        font-size: 18px
     }
 }
 
 @media(max-width:767px) {
     .breadcrumb-cnt h1 {
-        font-size: 30px
+        font-size: 16px
     }
 }
 
@@ -569,21 +550,14 @@ video {
 }
 
 .sec-title span {
-    font-weight: 600;
-    font-size: 16px;
-    display: inline-block;
-    color: #20B7E5;
-    text-transform: capitalize;
-    border-bottom: 1px solid #20B7E5;
-    padding-bottom: 2px;
-    margin-bottom: 5px
+    display: none;
 }
 
 .sec-title h2 {
     font-weight: 700;
     font-size: 40px;
     text-transform: capitalize;
-    color: #17161a;
+    color: #20B7E5;
     margin-bottom: 15px
 }
 

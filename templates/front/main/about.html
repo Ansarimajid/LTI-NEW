@@ -119,9 +119,9 @@
                             <p>{{ about.long_description|safe }}</p>
                             {% endif %}
                             <div class="company-since">
-                                {% if settings.logo_dark %}
+                                {% if settings.logo_light %}
                                 <div class="company-logo">
-                                    <img src="{{ settings.logo_dark.url }}" width="300" alt>
+                                    <img src="{{ settings.logo_light.url }}" width="300" alt>
                                 </div>
                                 {% endif %}
                                 {% if about.ranking_number %}
