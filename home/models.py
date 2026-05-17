@@ -21,6 +21,7 @@ class sliderSection(models.Model):
 
 # Services Model
 class serviceSection(models.Model):
+    project = models.ForeignKey('projectSection', blank=True, null=True, on_delete=models.CASCADE, related_name='services')
     name = models.CharField(max_length=200, blank=True, null=True)
     slug = models.SlugField(blank=True, null=True)
     short_description = models.CharField(max_length=500, blank=True, null=True)
@@ -90,9 +91,6 @@ class projectSection(models.Model):
     title = models.CharField(max_length=200, blank=True, null=True)
     slug = models.SlugField(blank=True, null=True)
     description = RichTextField(blank=True, null=True)
-    client = models.CharField(max_length=200, blank=True, null=True)
-    company = models.CharField(max_length=200, blank=True, null=True)
-    duration = models.CharField(max_length=100, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

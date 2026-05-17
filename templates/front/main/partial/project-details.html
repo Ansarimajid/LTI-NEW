@@ -14,7 +14,6 @@
             <div class="line_item"></div>
         </div>
 
-
         <section class="breadcrumbs">
             <div class="container">
                 <div class="row">
@@ -22,7 +21,13 @@
                         <div class="breadcrumb-wrapper">
                             <div class="breadcrumb-cnt">
                                 <h1>{{ project.title }}</h1>
-                                <span><a href="{% url "homePageFront" %}">Home</a><i class="bi bi-arrow-right"></i>Project<i class="bi bi-arrow-right"></i>{{ project.title }}</span>
+                                <span>
+                                    <a href="{% url "homePageFront" %}">Home</a>
+                                    <i class="bi bi-arrow-right"></i>
+                                    <a href="{% url "projectPageFront" %}">Projects</a>
+                                    <i class="bi bi-arrow-right"></i>
+                                    {{ project.title }}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -30,99 +35,64 @@
             </div>
         </section>
 
-
+        <!-- Project Details -->
         <section class="project-details sec-mar-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-12">
                         <div class="project-details-content">
                             {% if project.title %}
                             <h3>{{ project.title }}</h3>
                             {% endif %}
                             {{ project.description|safe }}
-                            <div class="project-thumb mt-4">
-                                <img src="{{ project.getProjectImage }}" style="width:400px;  border-radius:10px;" alt="project">
-                                {% if project.category %}
-                                <div class="tag">
-                                    <a href="">{{ project.category }}</a>
-                                </div>
-                                {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Under This Project -->
+        {% if services %}
+        <section class="services-grid sec-mar">
+            <div class="container">
+                <div class="title-wrap">
+                    <div class="sec-title">
+                        <span>{{ project.title }}</span>
+                        <h2>Our Services</h2>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    {% for service in services %}
+                    <div class="col-md-6 col-lg-4 wow animate fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+                        <div class="single-service">
+                            <span>0{{forloop.counter}}</span>
+                            {% if service.fontawesome_icon_class %}
+                            <div class="icon">
+                                <i class="{{ service.fontawesome_icon_class }} service-ico"></i>
+                            </div>
+                            {% endif %}
+                            {% if service.name %}
+                            <h4>{{ service.name }}</h4>
+                            {% endif %}
+                            {% if service.short_description %}
+                            <p>{{ service.short_description }}</p>
+                            {% endif %}
+                            <div class="read-btn">
+                                <a href="{% url "projectServiceDetail" project.slug service.slug %}">Read More</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="sidebar-widget">
-                            {% if project.category %}
-                            <div class="client-box">
-                                <span>Category:</span>
-                                <h5>{{ project.category }}</h5>
-                            </div>
-                            {% endif %}
-                            {% if project.client %}
-                            <div class="client-box">
-                                <span>Client:</span>
-                                <h5>{{ project.client }}</h5>
-                            </div>
-                            {% endif %}
-                            {% if project.company %}
-                            <div class="client-box">
-                                <span>Company:</span>
-                                <h5>{{ project.company }}</h5>
-                            </div>
-                            {% endif %}
-                            {% if project.duration %}
-                            <div class="client-box">
-                                <span>Duration:</span>
-                                <h5>{{ project.duration }}</h5>
-                            </div>
-                            {% endif %}
-                        </div>
-                        <div class="sidebar-widget">
-                            <div class="contact-info">
-                                <h3>Need help?</h3>
-                                <p>Please feel free to contact with us. We are here to help you.</p>
-                                <div class="cmpy-info">
-                                    <div class="icon">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                    </div>
-                                    <div class="cnt">
-                                        <h5>Location</h5>
-                                        <p>{{settings.address}}, {{settings.city}}-{{settings.postal}}, {{settings.state}}, {{settings.country}}</p>
-                                    </div>
-                                </div>
-                                <div class="cmpy-info">
-                                    <div class="icon">
-                                        <i class="fas fa-phone-alt"></i>
-                                    </div>
-                                    <div class="cnt">
-                                        <h5>Phone</h5>
-                                        <a href="tel:{{ settings.phone }}">{{ settings.phone }}</a>
-                                    </div>
-                                </div>
-                                <div class="cmpy-info">
-                                    <div class="icon">
-                                        <i class="far fa-envelope"></i>
-                                    </div>
-                                    <div class="cnt">
-                                        <h5>Email</h5>
-                                        <a href="mailto:{{ settings.email_address }}"><span class="__cf_email__"
-                                            data-cfemail="630a0d050c23061b020e130f064d000c0e">{{ settings.email_address }}</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {% if settings.show_call_now_widget %}
-                            <div class="sidebar-banner">
-                                <img src="{% static 'front/assets/img/widget-banner-bg.jpg' %}" alt>
-                                <div class="banner-inner">
-                                    <h3>Any Project <span>Call Now.</span>
-                                        <img class="angle" src="{% static 'front/assets/img/arrow-angle.png' %}" alt>
-                                    </h3>
-                                    <a href="tel:{{settings.phone}}">{{settings.phone}}</a>
-                                </div>
-                            </div>
-                    {% endif %}
-                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- Other Projects -->
+        {% if projects %}
+        <section class="project-details sec-mar">
+            <div class="container">
+                <div class="row">
                     <div class="project-slider">
                         <h4>Other Projects</h4>
                         <div class="arrow">
@@ -131,22 +101,23 @@
                         </div>
                         <div class="swiper project-slide">
                             <div class="swiper-wrapper">
-                                {% for project in projects|slice:":3" %}
-                                    <div class="swiper-slide">
-                                        <div class="single-item">
-                                            <div class="item-img">
-                                                <a href="{% url "projectDetails" project.slug %}"><img src="{{ project.getProjectImage }}"
-                                                        alt></a>
-                                            </div>
-                                            <div class="item-inner-cnt">
-                                                <span>{{ project.category }}</span>
-                                                <h4>{{ project.title }}</h4>
-                                                <div class="view-btn">
-                                                    <a href="{% url "projectDetails" project.slug %}">view details</a>
-                                                </div>
+                                {% for proj in projects|slice:":3" %}
+                                <div class="swiper-slide">
+                                    <div class="single-item">
+                                        <div class="item-img">
+                                            <a href="{% url "projectDetails" proj.slug %}">
+                                                <img src="{{ proj.getProjectImage }}" alt>
+                                            </a>
+                                        </div>
+                                        <div class="item-inner-cnt">
+                                            <span>{{ proj.category }}</span>
+                                            <h4>{{ proj.title }}</h4>
+                                            <div class="view-btn">
+                                                <a href="{% url "projectDetails" proj.slug %}">view details</a>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                 {% endfor %}
                             </div>
                         </div>
@@ -154,5 +125,7 @@
                 </div>
             </div>
         </section>
+        {% endif %}
 
+    </main>
 {% endblock %}
